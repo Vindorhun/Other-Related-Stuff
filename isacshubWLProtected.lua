@@ -1,3 +1,4 @@
+-- for sure, why are you here? We trust each other you know.
 _, Protected_by_MoonSecV2, Discord = 'discord.gg/gQEH2uZxUk'
 
 
