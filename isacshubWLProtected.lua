@@ -241,7 +241,7 @@ local function DealerESP(part,text)
     local function UPDATER()
         local c
         c = game:GetService("RunService").RenderStepped:Connect(function()
-            if part.Parent ~= nil then
+            if part.Parent ~= nil and part.Parent.Parent.Name == "Dealers" then
                 
                 local dropvector, onscreen = game.workspace.Camera:WorldToViewportPoint(part.Position)
                 if onscreen then
@@ -281,7 +281,7 @@ end)
     
 DealerFolder.ChildAdded:connect(function(a)
     if Toggles.DealerESP.Value == true and a.ClassName == "Model" and a:FindFirstChild("Bot") then
-        DealerESP(v.Head,"Dealer")
+        DealerESP(a.Head,"Dealer")
     end
 end)
     
@@ -332,7 +332,7 @@ Toggles.DroppedItemESP:OnChanged(function()
 end)
 droppeditemsfolder.ChildAdded:connect(function(a)
     if Toggles.DroppedItemESP.Value == true and a.ClassName == "Tool" and a:FindFirstChild("Handle") then
-        DroppedESP(v.Handle,a.Name)
+        DroppedESP(a.Handle,a.Name)
     end
 end)
 Options.DroppedESPColor:OnChanged(function()
