@@ -588,6 +588,7 @@ function NameTagRemove()
         end
     end
 end
+ActuallyLocalPlayerLeft:AddToggle('disablefunnycoldowns', { Text = 'Disable Jump Debouncer', Default = false})
 ActuallyLocalPlayerLeft:AddButton("Remove NameTag (FE)", NameTagRemove);
 ActuallyLocalPlayerLeft:AddSlider("funnywalkspeed", { Text = 'WalkSpeed', Default = 10, Min = 0, Max = 500, Rounding = 0, Suffix = "" });
 ActuallyLocalPlayerLeft:AddSlider("funnyjumpower", { Text = 'JumpPower', Default = 50, Min = 0, Max = 500, Rounding = 0, Suffix = "" });
@@ -604,7 +605,9 @@ Toggles.autopickupdroppeditems:OnChanged(function()
         end
     end
 end)
-    
+Toggles.disablefunnycoldowns:OnChanged(function()
+    game.Players.LocalPlayer.Character.JumpDebouncer.Disabled = Toggles.disablefunnycoldowns.Value
+end) 
 game.Workspace.DroppedItems.ChildAdded:connect(function()
     if Toggles.autopickupdroppeditems.Value == true then
         for _,v in pairs(game.Workspace.DroppedItems:GetDescendants()) do
